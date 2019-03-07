@@ -1,0 +1,15 @@
+          <?php
+          print_r($_SESSION['login_limit']);
+          if(!empty($_SESSION['login_limit'])){
+          ?>
+          <li><a href="index.php" class=link>ログアウト</a></li>
+          <li><a href="mypage.php" class=link>マイページ</a></li>
+          <?php
+            }else{
+          ?>
+            <li><a href="login.php" class=link>ログイン</a></li>
+            <li><a href="mypage.php" class=link>新規登録</a></li>
+          <?php
+            }
+          ?>
+        <li><a href="contact.php" class=link>連絡</a></li>

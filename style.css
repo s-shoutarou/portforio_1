@@ -1,0 +1,355 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color:yellow;
+}
+
+/*ヘッダー*/
+.logo{
+  font-size: 50px;
+  margin: 0px;
+  background-color: cornflowerblue;
+}
+
+h1 a{
+  color: black;
+  text-decoration: none;
+}
+
+#header{
+  overflow: hidden;
+}
+
+.head-menu{
+  margin: 0px;
+  width: 1500px;
+  height: 60px;
+  padding:0 75px;
+  background-color: darkgray;
+}
+
+.menu{
+  font-size: 30px;
+  border: 1px solid #e8e8e8;
+  float: left;
+  margin: 0 60px;
+  padding: 2px;
+  list-style: none;
+  background-color: aliceblue;
+  margin-bottom: 0;
+  padding: 7.2px;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
+  font-family: 'Hiragino Kaku Gothic StdN'
+}
+
+/*サイドバー*/
+#side-bar{
+  margin: 70px 30px 50px 0;
+  height: 255px;
+  width: 240px;
+  float: right;
+  background-color: crimson;
+}
+
+.selectbox{
+  width: 20%;
+}
+
+.choice{
+  margin:30px auto;
+  width: 60%;
+  height: 40px;
+  background-color: darkgrey;
+  font-size: 15px;
+}
+
+
+.category{
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryChoice{
+  float: right;
+  width: 100%;
+  margin: 0;
+}
+
+select{
+  display: block;
+}
+
+/*掲示板一覧表示*/
+.bord .thread-title a{
+  color: black;
+  text-decoration: none;
+}
+
+
+/*個別掲示板*/
+.bord{
+  width: 900px;
+  margin:70px 100px;
+  background-color: #EEEEEE;
+  
+}
+
+.thread-title{
+  display: inline-block;
+}
+
+.entry-top{
+  width: 80%;
+}
+
+.bord-category{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.msg{
+  word-wrap: break-word;
+  padding:50px 100px;
+  
+
+}
+
+.name{
+  color: blue;
+  font-size: 20px;
+}
+
+.fav-icon{
+
+  color: #ddd;
+}
+.fav-icon:hover{
+  cursor: pointer;
+}
+
+.fav-icon.active{
+  color: #FFFF99;
+}
+
+/*スレ立て*/
+.post-form{
+  width:70%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color:white;
+}
+
+textarea{
+  margin: 0 auto;
+  display: block;
+}
+
+.build-new-thread-logo{
+  text-align: center;
+}
+
+
+#build-new-thread-logo-choice{
+  margin:30px auto;
+  width: 500px;
+  height: 40px;
+  background-color: darkgrey;
+  font-size: 15px;
+}
+
+input[type = 'reset']{
+  margin: 15px auto;
+  display: block;
+}
+
+#upload_pic_form{
+  text-align: center;
+}
+
+/*掲示板画像*/
+.pic{
+  text-align: center;
+}
+
+/*投稿フォーム共通*/
+
+.post{
+  text-align: center;
+}
+
+
+.post-head{
+  text-decoration: none #333333;
+  margin: 0;
+}
+
+/*ページネーション*/
+.pagenation-list{
+  position: relative;
+  display: flex;
+  list-style: none;
+  margin-left: 150px;
+}
+
+li{
+  margin: 5px;
+}
+
+li.list-item{
+  background-color: white;
+}
+
+li.list-item a{
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 4px 10px;
+
+}
+
+li.active{
+  background-color: black;
+}
+
+li.active a{
+  text-decoration: none;
+  color: white;
+}
+
+
+/*インプットフォーム共通*/
+
+input[type = "text"]{
+  margin: 10px auto;
+  display: block;
+  padding: 10px;
+  border-style: none;
+  color: black;
+  background-color: #CCCCCC;
+  width: 500px;
+  height: 40px;
+  font-size: 20px;
+}
+
+input[type = "password"]{
+  margin: 10px auto;
+  display: block;
+  padding: 10px;
+  border-style: none;
+  color: black;
+  background-color: #CCCCCC;
+  width: 500px;
+  height: 40px;
+  font-size: 20px;
+}
+
+
+input[type = "password"]{
+  color: black;
+}
+
+input[type = 'checkbox']{
+  width: 18px;
+  height: 18px;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+/*送信ボタン共通*/
+input[type = "submit"]{
+  background-color: black;
+  color: white;
+  margin: 20px auto;
+  height: 40px;
+  width: 70px;
+  text-align: center;
+  padding: 0;
+  display: block;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+/*ログイン*/
+#login_form{
+  margin: 50px auto;
+  height: 350px;
+  width: 700px;
+  background: purple;
+  max-height: 1000px;
+  padding: 10px;
+}
+
+#login_logo{
+  text-align: center;
+  margin: 10px 0;
+}
+
+.login{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+
+#login{
+  margin: 0 auto;
+}
+
+label{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+/*サインアップ*/
+#signup_logo{
+  text-align: center;
+  margin: 10px 0;
+}
+
+#signup_form{
+  margin: 50px auto;
+  height: 600px;
+  width: 700px;
+  background: purple;
+}
+/*入力フォームのエラーメッセージ表示*/
+.err_msg_display{
+  height: 15px;
+  color: red;
+}
+/*エラー発生時*/
+.err{
+  background-color: #FF6666;
+}
+
+/*退会機能*/
+#unsubscribe{
+  width: 50%;
+  height: 400px;
+  margin: 0 auto;
+  
+}
+
+#unsubscribe-form{
+    background-color: red;
+    width: 300px;
+    margin: 0 auto;
+    height: 300px;
+   padding: 30px;
+  margin: 50px auto;
+}
+
+#unsubscribe-form-title{
+  text-align: center;
+  margin: 80px 0px 80px 0px;
+}
+
