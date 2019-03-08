@@ -74,14 +74,18 @@ if(!empty($_POST && $_FILES)){
 }
 
 //戦型選択検索
-$choice = (!empty($_POST['choice'])) ? $_POST['choice'] : '';
-debug('戦型番号'.$choice);
+if((!empty($_POST['category']))){
+  $category = $_POST['category'];
+  debug('戦型番号'.$category);
+  $categoryChoiceBord = getSelectBord($category);
+  debug('戦型選択スレッド取得結果'.print_r($categoryChoiceBord,true));
+}
 
-$choiceBord = getSelectBord($choice);
-debug('戦型選択スレッド取得結果'.print_r($choiceBord,true));
 ?>
+
 <body>
 
+<?php if(empty($categoryChoiceBord)):?>
 <div class="entry-top">
   <div>
   <span class = total><?php echo sanitize($dbBordData['total'])?></span>件のスレッドが見つかりました
@@ -96,11 +100,30 @@ debug('戦型選択スレッド取得結果'.print_r($choiceBord,true));
   <i class="fas fa-star fa-2x fav-icon" data-thread-id = "<?php echo $val['id'];?>"></i>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt=""></a>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>">続きを読む</a>
-
   </section>
-  <?php endforeach?>
-
 </div>
+  <?php endforeach?>
+<!--戦型選択をした場合-->
+<?php else:?>
+<div class="entry-top">
+  <div>
+  <span class = total><?php echo sanitize($categoryChoiceBord['bordCount'])?></span>件のスレッドが見つかりました
+  </div>
+  <div>
+    <span class = num><?php echo $currentMinNum +1;?></span>-<span class = num><?php echo $currentMinNum + $listSpan?></span>件 / <span class=num><?php echo sanitize($categoryChoiceBord['bordCount'])?></span>件中
+  </div>
+  <!--掲示板一覧表示-->
+  <?php foreach($categoryChoiceBord['bordData'] as $key => $val):?>
+  <section class = bord>
+    <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><?php echo $val['title']?></a> </h2>
+  <i class="fas fa-star fa-2x fav-icon" data-thread-id = "<?php echo $val['id'];?>"></i>
+    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt=""></a>
+    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>">続きを読む</a>
+  </section>
+</div>
+    <?php endforeach?>
+<?php endif?>
+
 
 <!--ページネーション-->
 <div class="pagenation">

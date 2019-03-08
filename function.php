@@ -375,7 +375,7 @@ function buildNewThread($content,$u_id,$p_path,$p_id){//実際のスレ立て
 
 function appendGetParam($arr_del_key){
   debug('アペンド第０段階・$arr_del_key'.print_r($arr_del_key,true));
-  if(!empty($_GET)){
+  if(!empty($_GET) && $_GET['p'] != 1){
     debug('アペンド第一段階'.print_r($_GET,true));
     $str = '?';
     foreach($_GET as $key => $val){
@@ -390,6 +390,8 @@ function appendGetParam($arr_del_key){
     $str = mb_substr($str,0,-1,"UTF-8");
     debug('アペンド第３段階'.$str);
     echo $str;
+  }else{
+    echo '';
   }
 }
 
