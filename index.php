@@ -97,9 +97,9 @@ if((!empty($_POST['category']))){
   <?php foreach($dbBordData['data'] as $key => $val):?>
   <section class = bord>
     <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><?php echo $val['title']?></a> </h2>
-  <i class="fas fa-star fa-2x fav-icon" data-thread-id = "<?php echo $val['id'];?>"></i>
+  <i class="fas fa-star fa-2x fav-icon js-click-fav" data-threadid = "<?php echo $val['id'];?>"></i>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt=""></a>
-    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>">続きを読む</a>
+    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"class = 'thread-link'>続きを読む</a>
   </section>
 </div>
   <?php endforeach?>

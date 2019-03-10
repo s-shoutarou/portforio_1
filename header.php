@@ -1,11 +1,12 @@
  <header>
+<section id = header>
+<ul id = head-menu>
+ <li>
   <nav class = logo>
     <h1 class = logo><a href="index.php">将棋場〜</a></h1>
   </nav>
-
-  <section id = header>
+  </li>
      <nav>
-      <ul class = head-menu>
         <li class = menu ><a href="index.php" class=link>トップ</a></li>
         <li class = menu><a href="about.php" class=link>概要</a></li>
         <?php if(empty($_SESSION['user_id'])){ ?>

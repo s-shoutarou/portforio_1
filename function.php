@@ -399,7 +399,7 @@ function appendGetParam($arr_del_key){
 function getFavariteBord($u_id){
   try{
   $dbh = dbConnect();
-  $sql = 'SELECT * FROM favorite INNER JOIN bord ON favorite.bord_id = bord.id WHERE favorite.user_id = :user_id';
+  $sql = 'SELECT * FROM favorite INNER JOIN bord ON favorite.bord_id = bord.id WHERE favorite.user_id = :user_id ORDER BY id DESC';
   $data = array(':user_id'=>$u_id);
   $stmt = queryPost($dbh,$sql,$data);
   return $stmt->fetchAll();
@@ -433,10 +433,22 @@ function isLike($u_id,$b_id){
 //お気に入り一覧URL作成用関数
 //トップページ表示用掲示板データ取得
 function getFavLinkData($b_id,$span = 10){
- $page_num = ceil($b_id/$span);
+  try{
+    $dbh = dbConnect();
+    $sql = 'SELECT* FROM bord';
+    $data = array();
+    $stmt = queryPost($dbh,$sql,$data);
+    $threadCount = $stmt->rowCount();
+    debug('総スレッド数'.$threadCount);
+  }catch(Exception $e){
+    error_log('エラー：'.$e->getMessage());
+  }
+ $totalPage_num = ceil($threadCount/$span);
+  debug('総ページ数'.$totalPage_num);
+ $page_num = floor($b_id/$span);
   debug('$page_num:'.$page_num);
     debug('掲示板一覧へ遷移するためのgetパラメータを作成します');
-    return $page_num;
+    return ($totalPage_num - $page_num);
   }
 
 function getSelectBord($str){
@@ -445,16 +457,26 @@ function getSelectBord($str){
   $sql = 'SELECT * FROM bord WHERE category = :category ORDER BY id DESC';
   $data = array(':category'=>$str);
   $stmt = queryPost($dbh,$sql,$data);
-    
-                    
-  if($stmt){
-  $bordData = $stmt->fetchAll();
-  $bordCount = $stmt->rowCount();
-  return array('bordData'=>$bordData,'bordCount'=>$bordCount);
+    if($stmt){
+    $bordData = $stmt->fetchAll();
+    $bordCount = $stmt->rowCount();
+    return array('bordData'=>$bordData,'bordCount'=>$bordCount);
     }else{
       debug('選択した戦型のスレッドデータを取得できませんでした');
       return false;
     }
+  }catch(Exception $e){
+    error_log('エラー：'.$e->getMessage());
+  }
+}
+
+function getUserInfo($u_id){
+  try{
+    $dbh = dbConnect();
+    $sql = 'SELECT* FROM users WHERE id = :id';
+    $data = array(':id'=>$u_id);
+    $stmt = queryPost($dbh,$sql,$data);
+    return $result = $stmt->fetch(PDO::FETCH_ASSOC);
   }catch(Exception $e){
     error_log('エラー：'.$e->getMessage());
   }
