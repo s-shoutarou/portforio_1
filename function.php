@@ -209,12 +209,14 @@ function sanitize($str){
 }
 
 //トップページ表示用掲示板データ取得
-function getBordDataList($currentMinNum = 1 , $span = 10){
+function getBordDataList($currentMinNum = 1 ,$category = 0, $span = 10){
   debug('掲示板情報を取得します');
   try{
     $dbh = dbConnect();
     //スレッド数の取得
-    $sql = 'SELECT id FROM bord';
+    $sql = 'SELECT id FROM bord ';
+    if(!empty($category)) $sql .= 'WHERE category = '.$category;
+    debug('sql = '.$sql);
     $data = array();
     $stmt = queryPost($dbh,$sql,$data);
     $rst['total'] = $stmt->rowCount();//総レコード数
@@ -224,8 +226,9 @@ function getBordDataList($currentMinNum = 1 , $span = 10){
       return false;
     }
     //ページング用SQL文作成
-    $sql = 'SELECT * FROM bord ORDER BY id DESC ';
-    $sql.= 'LIMIT :span OFFSET :currentMinNum';
+    $sql = 'SELECT * FROM bord';
+    if(!empty($category)) $sql .= ' WHERE category = '.$category;
+    $sql .= ' ORDER BY id DESC LIMIT :span OFFSET :currentMinNum';
     debug('SQL:'.$sql);
     $stmt = $dbh->prepare($sql);
     debug('クエリ内容確認：'.print_r($stmt,true));

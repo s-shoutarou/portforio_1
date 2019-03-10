@@ -23,10 +23,19 @@ if(!is_int((int)$currentPageNum)){
 $listSpan = 10;
 
 //現在の表示レコード先頭を算出
+if(empty($_POST['category'])){
 $currentMinNum = (($currentPageNum - 1)*$listSpan);
 //DBからスレッドデータを取得
 $dbBordData = getBordDataList($currentMinNum);
-
+}else{//戦型選択検索
+  $category = $_POST['category'];
+  debug('戦型番号'.$category);
+$currentMinNum = (($currentPageNum - 1)*$listSpan);
+//DBからスレッドデータを取得
+$dbBordData = getBordDataList($currentMinNum,$category);
+  //$categoryChoiceBord = getSelectBord($category);
+  //debug('戦型選択スレッド取得結果'.print_r($categoryChoiceBord,true));
+}
 
 //新規スレッド作成関係//////////////////////////////////////
 if(!empty($_POST && $_FILES)){
@@ -73,13 +82,6 @@ if(!empty($_POST && $_FILES)){
   }
 }
 
-//戦型選択検索
-if((!empty($_POST['category']))){
-  $category = $_POST['category'];
-  debug('戦型番号'.$category);
-  $categoryChoiceBord = getSelectBord($category);
-  debug('戦型選択スレッド取得結果'.print_r($categoryChoiceBord,true));
-}
 
 ?>
 
