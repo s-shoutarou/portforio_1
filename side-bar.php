@@ -5,7 +5,7 @@
 <?php if(basename($_SERVER['PHP_SELF']) !== 'mypage.php'): //マイページ以外の場合?>
  <section id = side-bar>
   <h2 class = category>カテゴリー</h2>
-    <form name = "" method = post class = categoryChoice>
+    <form name = "" method = get class = categoryChoice>
       <select name="category" class="choice">
         <option value=0 <?php ?>>選択してください</option>
         <?php foreach($category as $key => $val):?>

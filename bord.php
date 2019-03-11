@@ -6,6 +6,11 @@ require('side-bar.php');
 
 loginCheck();
 
+//カテゴリー検索を実行した場合
+if(!empty($_GET['category'])){
+  header('Location:index.php?category='.$_GET['category']);
+}
+
 //getパラメータ取得
 $b_id = (!empty($_GET['b_id'])) ? $_GET['b_id'] : "";
 $p_id = (!empty($_GET['p'])) ? $_GET['p'] : "";
@@ -55,7 +60,7 @@ debugLogStart();
 <h2 class = thread-title><?php echo $bord['title']; ?></h2>
 <i class="fas fa-star fa-2x fav-icon js-click-fav <?php if(isLike($_SESSION['user_id'],$b_id)){echo "active";}?>" data-threadid = "<?php echo $b_id;?>"></i>
  <div class="entry-top">
-    <div class="bord-category"><?php echo $bord['c_name'];?></div>
+    <div class="bord-category"><a class = "category-link" href="index.php<?php echo "?category=".$bord['category']?>"><?php echo $bord['c_name'];?></a></div>
     <div class = pic>
     <img src=<?php echo $bord['pic']?> alt="" >
     </div>

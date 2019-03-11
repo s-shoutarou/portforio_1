@@ -4,6 +4,10 @@ body{
   background-color:yellow;
 }
 
+.wrap{
+  overflow: hidden;
+}
+
 /*個別スレッドリンク共通*/
 .thread-link{
   color: black;
@@ -34,12 +38,9 @@ h1 a{
   margin: 0;
   padding: 0;
   display: inline-block;
-  height: 45px;
+  width: 100%;
 }
 
-ul{
-  min-width: 1450px;
-}
 
 li{
   float: left;
@@ -67,11 +68,10 @@ li{
 
 /*サイドバー*/
 #side-bar{
-  margin: 70px 30px 50px 0;
-  height: 255px;
+  margin: 83px 30px 50px 0;
   width: 240px;
   float: right;
-  background-color: crimson;
+  background-color: red;
 }
 
 .selectbox{
@@ -98,6 +98,7 @@ li{
   float: right;
   width: 100%;
   margin: 0;
+  background-color: red;
 }
 
 select{
@@ -105,7 +106,7 @@ select{
 }
 
 /*掲示板一覧表示*/
-.bord .thread-title a{
+.thread-title a{
   color: black;
   text-decoration: none;
 }
@@ -117,9 +118,16 @@ img{
 /*個別掲示板*/
 .bord{
   width: 900px;
-  margin:35px 100px;
+  position: relative;
+  top: 10px;
+  left: 100px;
+  margin-top: 25px;
   background-color: #EEEEEE;
   
+}
+
+.category-link{
+  color:#0066FF;
 }
 
 .thread-title{
@@ -131,10 +139,7 @@ img{
 }
 
 .bord-category{
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
 .msg{
@@ -218,7 +223,7 @@ input[type = 'reset']{
   position: relative;
   display: flex;
   list-style: none;
-  margin-left: 150px;
+  margin-left: 55px;
 }
 
 li{
@@ -392,5 +397,6 @@ label{
 
 .thread-link{
   font-size: 20px;
+  color: #0066FF;
 }
 

@@ -23,16 +23,14 @@ if(!is_int((int)$currentPageNum)){
 $listSpan = 10;
 
 //現在の表示レコード先頭を算出
-if(empty($_POST['category'])){
+if(empty($_GET['category'])){
 $currentMinNum = (($currentPageNum - 1)*$listSpan);
 //DBからスレッドデータを取得
 $dbBordData = getBordDataList($currentMinNum);
 }else{//戦型選択検索
-  $category = $_POST['category'];
-  debug('戦型番号'.$category);
 $currentMinNum = (($currentPageNum - 1)*$listSpan);
 //DBからスレッドデータを取得
-$dbBordData = getBordDataList($currentMinNum,$category);
+$dbBordData = getBordDataList($currentMinNum,$_GET['category']);
   //$categoryChoiceBord = getSelectBord($category);
   //debug('戦型選択スレッド取得結果'.print_r($categoryChoiceBord,true));
 }
@@ -86,8 +84,6 @@ if(!empty($_POST && $_FILES)){
 ?>
 
 <body>
-
-<?php if(empty($categoryChoiceBord)):?>
 <div class="entry-top">
   <div>
   <span class = total><?php echo sanitize($dbBordData['total'])?></span>件のスレッドが見つかりました
@@ -99,33 +95,13 @@ if(!empty($_POST && $_FILES)){
   <?php foreach($dbBordData['data'] as $key => $val):?>
   <section class = bord>
     <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><?php echo $val['title']?></a> </h2>
-  <i class="fas fa-star fa-2x fav-icon js-click-fav" data-threadid = "<?php echo $val['id'];?>"></i>
-    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt=""></a>
+  <i class="fas fa-star fa-2x fav-icon js-click-fav <?php if(isLike($_SESSION['user_id'],$val['id'])){echo "active";}?>" data-threadid = "<?php echo $val['id'];?>"></i>
+    <div class="bord-category"><a class = "category-link" href="index.php<?php echo "?category=".$val['c_id']?>"><?php echo $val['name'];?></a></div>
+    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt="" height="270px" width = 360px></a>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"class = 'thread-link'>続きを読む</a>
   </section>
 </div>
   <?php endforeach?>
-<!--戦型選択をした場合-->
-<?php else:?>
-<div class="entry-top">
-  <div>
-  <span class = total><?php echo sanitize($categoryChoiceBord['bordCount'])?></span>件のスレッドが見つかりました
-  </div>
-  <div>
-    <span class = num><?php echo $currentMinNum +1;?></span>-<span class = num><?php echo $currentMinNum + $listSpan?></span>件 / <span class=num><?php echo sanitize($categoryChoiceBord['bordCount'])?></span>件中
-  </div>
-  <!--掲示板一覧表示-->
-  <?php foreach($categoryChoiceBord['bordData'] as $key => $val):?>
-  <section class = bord>
-    <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><?php echo $val['title']?></a> </h2>
-  <i class="fas fa-star fa-2x fav-icon" data-thread-id = "<?php echo $val['id'];?>"></i>
-    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt=""></a>
-    <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>">続きを読む</a>
-  </section>
-</div>
-    <?php endforeach?>
-<?php endif?>
-
 
 <!--ページネーション-->
 <div class="pagenation">

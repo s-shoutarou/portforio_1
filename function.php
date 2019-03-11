@@ -226,7 +226,7 @@ function getBordDataList($currentMinNum = 1 ,$category = 0, $span = 10){
       return false;
     }
     //ページング用SQL文作成
-    $sql = 'SELECT * FROM bord';
+    $sql = 'SELECT bord.id,bord.title,bord.pic,bord.first_msg,bord.user_id,bord.create_time,category.id as c_id,category.name FROM bord INNER JOIN category ON bord.category = category.id';
     if(!empty($category)) $sql .= ' WHERE category = '.$category;
     $sql .= ' ORDER BY id DESC LIMIT :span OFFSET :currentMinNum';
     debug('SQL:'.$sql);
