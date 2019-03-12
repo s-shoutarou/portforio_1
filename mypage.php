@@ -15,7 +15,6 @@ debug('お気に入りスレッド取得結果'.print_r($favoriteBord,true));
     <div class = 'fav-entry-top'>
    <?php $linkBordData = getFavLinkData($val['bord_id']);?>
       <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['bord_id']."&p=".$linkBordData?>"><?php if(!empty($val['title'])){echo $val['title'];}?></a></h2>
-    <i class="fas fa-star fa-2x fav-icon js-click-fav <?php if(isLike($_SESSION['user_id'],$val['bord_id'])){echo "active";}?>" data-threadid = "<?php echo $val['bord_id'];?>"></i>
       <a href="bord.php?b_id=<?php echo $val['bord_id']."&p=".$linkBordData?>" class = 'thread-link'><img src="<?php if(!empty($val['pic'])){echo $val['pic'];}?>" alt=""></a>
     <a href="bord.php?b_id=<?php echo $val['bord_id']."&p=".$linkBordData?>" class = 'thread-link'>続きを読む</a>
     </div>

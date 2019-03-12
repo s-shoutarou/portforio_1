@@ -284,7 +284,7 @@ function getCategory(){
   debug('カテゴリーを取得します');
   try{
   $dbh = dbConnect();
-  $sql = 'SELECT * FROM category';
+  $sql = 'SELECT * FROM category WHERE delete_flg = 0';
   $data = array();
   $stmt = queryPost($dbh,$sql,$data);
   if($stmt){

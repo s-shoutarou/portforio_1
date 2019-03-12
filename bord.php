@@ -56,6 +56,7 @@ debugLogStart();
 
 
 ?>
+<div class="space"></div>
 <section class = bord>
 <h2 class = thread-title><?php echo $bord['title']; ?></h2>
 <i class="fas fa-star fa-2x fav-icon js-click-fav <?php if(isLike($_SESSION['user_id'],$b_id)){echo "active";}?>" data-threadid = "<?php echo $b_id;?>"></i>
@@ -77,7 +78,7 @@ debugLogStart();
  <?php endforeach?>
 </section>
 
-<a href="index.php<?php appendGetParam(array('b_id'));?>">&lt;掲示板一覧に戻る</a>
+<div class = "back"><a href="index.php<?php appendGetParam(array('b_id'));?>">&lt;掲示板一覧に戻る</a></div>
 
 <!--レス投稿フォーム-->
 <div>

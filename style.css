@@ -123,7 +123,15 @@ img{
   left: 100px;
   margin-top: 25px;
   background-color: #EEEEEE;
-  
+}
+
+.back{
+  margin-top: 40px;
+}
+
+.space{
+  width: 1140px;
+  height: 48px;
 }
 
 .category-link{

@@ -95,7 +95,6 @@ if(!empty($_POST && $_FILES)){
   <?php foreach($dbBordData['data'] as $key => $val):?>
   <section class = bord>
     <h2 class = thread-title><a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><?php echo $val['title']?></a> </h2>
-  <i class="fas fa-star fa-2x fav-icon js-click-fav <?php if(isLike($_SESSION['user_id'],$val['id'])){echo "active";}?>" data-threadid = "<?php echo $val['id'];?>"></i>
     <div class="bord-category"><a class = "category-link" href="index.php<?php echo "?category=".$val['c_id']?>"><?php echo $val['name'];?></a></div>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"><img src="<?php echo $val['pic']?>" alt="" height="270px" width = 360px></a>
     <a href="bord.php?b_id=<?php echo $val['id']."&p=".$currentPageNum ;?>"class = 'thread-link'>続きを読む</a>
