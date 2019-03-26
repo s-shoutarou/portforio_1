@@ -85,7 +85,7 @@ debugLogStart();
 <section class = post-form>
     <form action="" method ="post" enctype ="multipart/form-data" class = post>
     <!--<input ・type="text" name = 'user_name' class = post-head value="ハンドルネームを入力してください">-->
-    <h2>掲示板に書き込む</h2>
+    <h2 class="post-top">掲示板に書き込む</h2>
         <div class = "upload_pic_form">添付ファイル
         <input type="hidden" name = "MAX_FILE_SIZE" value = "3145728">
         <input type="file" name = "pic" class = "input-file">

@@ -1,12 +1,7 @@
- <header>
-<section id = header>
-<ul id = head-menu>
- <li>
-  <nav class = logo>
-    <h1 class = logo><a href="index.php">将棋場〜</a></h1>
-  </nav>
-  </li>
-     <nav>
+<header>
+  <nav class = head-nav>
+  <a class = "logo" href="index.php">将棋場〜</a>
+    <ul id = head-menu>
         <li class = menu ><a href="index.php" class=link>トップ</a></li>
         <?php if(empty($_SESSION['user_id'])){ ?>
         <li class = menu><a href="login.php" class=link>ログイン</a></li>
@@ -16,7 +11,6 @@
         <li class = menu><a href="logout.php" class=link>ログアウト</a></li>
         <li class = menu><a href="unsubscribe.php" class = link>退会</a></li>
         <?php } ?>
-      </ul>
-    </nav>
-  </section>
+    </ul>
+  </nav>
 </header>
