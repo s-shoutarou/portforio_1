@@ -74,6 +74,9 @@ debugLogStart();
     <div class="msg">
     <div class="name"><?php echo $val['name']?></div>
     <div class="create-time"><?php echo $val['create_time']?></div>
+    <div class="pic">
+      <img src=<?php echo $val['pic']?> alt="">
+    </div>
     <?php echo $val['message']?></div>
  <?php endforeach?>
 </section>

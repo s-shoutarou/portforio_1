@@ -34,9 +34,25 @@ loginCheck();
     }
   }
 ?>
-<section id = unsubscribe>
-  <form action="" method="post" id = unsubscribe-form>
+<!--モーダル-->
+    <div class="modal-panel">
+    <form method="post" action="" class="modal-menu">
     <h2 id = unsubscribe-form-title>本当に退会しますか？</h2>
-    <input type="submit" value = 'はい' name = submit>
+    <input class = "unsubscribe-btn" type="submit" value = 'はい' name = YES>
+    <button type="button" class =" back-btn">いいえ</button>
+    </form>
+    </div>
+    <div class="modal"></div>
+<!--最初から表示されている箇所-->
+<section id = unsubscribe>
+  <form action="" id = unsubscribe-form>
+  <div class="wrap">
+  <div>退会を希望される方は<br>
+   パスワードを入力してください</div>
+    <div class="form-msg"></div>
+   <input type="password" class="unsubscribe-password">
+    <button type="button" class="unsubscribe-btn js-click-unsubscribe" disabled>退会する</button>
+  </div>
   </form>
 </section>
+<?php require('footer.php')?>

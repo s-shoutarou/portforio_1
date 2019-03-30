@@ -21,14 +21,14 @@ if(!empty($_POST)){
   validMax($email,'email');
   validMinimum($email,'email');
   validEmpty($email,'email');
-  validHalf($email,'email');
+//  validHalf($email,'email');
 //登録済みemailアドレスのチェック
   validDuplication($email);
 //passのバリデーションに突入  validEmail($pass,'pass');
   validMax($pass,'pass');
   validMinimum($pass,'pass');
   validEmpty($pass,'pass');
-  validHalf($email,'email');
+//  validHalf($email,'email');
 //nameのバリデーションに突入
   validMax($name,'name');
   validEmpty($name,'name');
@@ -60,6 +60,7 @@ if(!empty($_POST)){
       }
     }else{
       debug('バリデーションに引っかかってます');
+      debug(print_r($err_msg,true));
     }
 }
 
