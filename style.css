@@ -1,14 +1,10 @@
-html{
-  height: 100%;
-}
 body{
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: #0066CC;
   opacity: 1;
   font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
-  overflow: hidden;
+ 
 }
 div{
   color: #FFFFFF;
@@ -350,12 +346,15 @@ li.active a{
 #login_form{
   color: black;
   border-radius: 4px;
-  margin: 50px auto;
-  height: 350px;
+  margin: 0 auto;
+  height: 370px;
   width: 700px;
   background: #C0C0C0;
   max-height: 1000px;
   padding: 10px;
+  position: relative;
+  top: 100px;
+  left: 30px;
 }
 
 #login_logo{
@@ -382,13 +381,15 @@ label{
 /*サインアップ*/
 #signup_logo{
   text-align: center;
-  margin: 10px 0;
+  margin: 0;
   color: black;
 }
 
 #signup_form{
-  margin: 50px auto;
-  height: 600px;
+  position: relative;
+  top:100px;
+  left: 340px;
+  height: 630px;
   width: 700px;
   background: #C0C0C0;
   color: black;

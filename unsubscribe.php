@@ -1,4 +1,6 @@
 <?php
+$site_title = '退会';
+
   require('head.php');
   require('function.php');
   require('header.php');
@@ -56,3 +58,8 @@ loginCheck();
   </form>
 </section>
 <?php require('footer.php')?>
+
+
+<?php
+  require('footer.php');
+  ?>

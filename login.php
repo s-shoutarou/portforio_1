@@ -1,4 +1,6 @@
 <?php
+$site_title = 'ログイン';
+
 require('function.php');
 require('header.php');
 require('head.php');
@@ -113,3 +115,8 @@ if(!empty($_POST)){
   </form>
 </section>
 </div>
+
+
+<?php
+  require('footer.php');
+  ?>

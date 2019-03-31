@@ -62,8 +62,22 @@
   
   
       //引き止めモーダル
-      var windowWidth = $(window).innerWidth();
-      var windowHeight = $(window).innerHeight();
+//      var windowWidth = $(window).innerWidth();
+//      var windowHeight = $(window).innerHeight();
+//      $('.js-click-unsubscribe').on("click",function(){
+//          $('.modal').css('width',windowWidth + "px");
+//          $('.modal').css('height',windowHeight + "px");
+//          $('.modal-panel,.modal').css('display','block');
+//        $('.back-btn').on("click",function(){
+//          $('.modal-panel,.modal').css('display','none');
+//        })
+//        }
+//      )}
+//      );
+    
+    //引き止めモーダル
+      var windowWidth =(function(){return $(window).innerWidth();}());
+      var windowHeight =(function() {return $(window).innerHeight()}());
       $('.js-click-unsubscribe').on("click",function(){
           $('.modal').css('width',windowWidth + "px");
           $('.modal').css('height',windowHeight + "px");
@@ -74,6 +88,7 @@
         }
       )}
       );
+    
   </script>
 
 

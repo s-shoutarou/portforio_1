@@ -32,10 +32,12 @@ if(!empty($_POST)){
     debug('投稿フォームが不適切な状態です。');
     debug('投稿を中止します。');
     }else{
+    //画像のパス設定
+    $pic_path = uploading($_FILES['pic'],'pic');
       try{
         $dbh = dbConnect();
-        $sql = 'INSERT INTO message(bord_id,message,user_id,create_time) VALUES(:bord_id,:message,:user_id,:create_time)';
-        $data = array(':bord_id'=>$bord['id'],':message'=>$_POST['post_msg'],':user_id'=>$_SESSION['user_id'],':create_time'=>date('Y-m-d H:i:s'));
+        $sql = 'INSERT INTO message(bord_id,message,pic,user_id,create_time) VALUES(:bord_id,:message,:pic,:user_id,:create_time)';
+        $data = array(':bord_id'=>$bord['id'],':message'=>$_POST['post_msg'],':pic'=>$pic_path,':user_id'=>$_SESSION['user_id'],':create_time'=>date('Y-m-d H:i:s'));
         if($stmt = queryPost($dbh,$sql,$data)){
           debug('新規メッセージ投稿成功');
         }else{

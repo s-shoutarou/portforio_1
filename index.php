@@ -138,13 +138,14 @@ if(!empty($_POST && $_FILES)){
     <?php if($currentPageNum != 1):?>
       <li class="list-item"><a href="?p=1">&lt;</a></li>
     <?php endif; ?>
+    
     <?php
     for($i = $minPageNum;$i<= $maxPageNum;$i++):
     ?>
     <li class="list-item <?php if($currentPageNum == $i) echo 'active';?>"><a href="?p=<?php echo $i ;?>"><?php echo $i ;?></a></li>
     <?php endfor;?>
-    <?php if($currentPageNum == $minPageNum):?>
-      <li class ="list-item"><a href="?p=<?php echo $maxPageNum; ?>">&gt;</a></li>
+    <?php if($totalPageNum >= $pageColNum && $currentPageNum !== $maxPageNum):?>
+      <li class ="list-item"><a href="?p=<?php echo $totalPageNum; ?>">&gt;</a></li>
     <?php endif;?>
   </ul>
 </div>

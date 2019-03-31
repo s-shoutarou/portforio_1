@@ -1,4 +1,6 @@
 <?php
+$site_title = 'マイページ';
+
 require('function.php');
 require('head.php');
 require('header.php');
@@ -28,3 +30,8 @@ debug('お気に入りスレッド取得結果'.print_r($favoriteBord,true));
 <?php
 require('footer.php');
 ?>
+
+
+<?php
+  require('footer.php');
+  ?>

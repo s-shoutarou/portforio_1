@@ -1,4 +1,6 @@
 <?php
+$site_title = '新規登録';
+
 require('head.php');
 require('header.php');
 require('function.php');
@@ -8,6 +10,8 @@ debug('アカウント新規作成ページを開きました。');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 //loginCheck();
+
+
 
 if(!empty($_POST)){
   debug('POST送信があります');
@@ -52,8 +56,14 @@ if(!empty($_POST)){
         $sesslimit = 60*60;
         $_SESSION['login_time'] = time();
         $_SESSION['login_limit'] = $sesslimit;
+        $sql2 = 'SELECT id FROM users WHERE email = :email;';
+        $data2 = array(':email'=>$email);
+        $stmt = queryPost($dbh,$sql2,$data2);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        debug(print_r($result,true));
+        $_SESSION['user_id'] = $result['id'];
       }
-      header('Location,mypage.php');
+      header('Location:mypage.php');
       }catch (Exeption $e){
       error_log('エラー：'.$e -> getMessage());
       $err_msg['common'] = msg06;
@@ -95,3 +105,8 @@ if(!empty($_POST)){
     </form>
   </section>
 </div>
+
+
+<?php
+  require('footer.php');
+  ?>
