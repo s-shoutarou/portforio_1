@@ -133,6 +133,10 @@ if(!empty($_POST && $_FILES)){
       $minPageNum = $currentPageNum - 2;
       $maxPageNum = $currentPageNum + 1;
     }
+  
+  debug('カレントページ：'.$currentPageNum);
+  debug('minページ：'.$minPageNum);
+  debug('総ページ数：'.$maxPageNum);
     ?>
     
     <?php if($currentPageNum != 1):?>
@@ -144,7 +148,7 @@ if(!empty($_POST && $_FILES)){
     ?>
     <li class="list-item <?php if($currentPageNum == $i) echo 'active';?>"><a href="?p=<?php echo $i ;?>"><?php echo $i ;?></a></li>
     <?php endfor;?>
-    <?php if($totalPageNum >= $pageColNum && $currentPageNum !== $maxPageNum):?>
+    <?php if($currentPageNum != $maxPageNum):?>
       <li class ="list-item"><a href="?p=<?php echo $totalPageNum; ?>">&gt;</a></li>
     <?php endif;?>
   </ul>
