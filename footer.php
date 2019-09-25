@@ -33,7 +33,7 @@
           }
     });
 //ボタン押下ブロック
-  var textData = {email:'',pass:''};
+  var textData = {pass:''};
   $('.unsubscribe-password').on('keyup',function(){
     textData['pass'] = $('.unsubscribe-password').val();
     console.log(textData);

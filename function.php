@@ -2,7 +2,7 @@
 ini_set('log_errors','on');
 ini_set('erro_log','php.log');
 
-$debug_flg = true;
+$debug_flg = false;
 
 $err_msg = array();
 
@@ -170,7 +170,7 @@ function dbConnect(){
   debug('DBコネクト成功');
   return $dbh;
 }
-                      
+
 function queryPost($dbh,$sql,$data){
   $stmt = $dbh->prepare($sql);
   debug('クエリ内容確認：'.print_r($stmt,true));
